@@ -33,6 +33,9 @@ class TodoViewmodel extends ChangeNotifier {
   Future<Result<Todo>> _addTodo(String name) async {
     final lastTodoIndex = todos.length;
 
+    await Future.delayed(
+      const Duration(seconds: 2),
+    );
     final createdTodo = Todo(id: lastTodoIndex + 1, name: name);
     _todos.add(createdTodo);
     notifyListeners();

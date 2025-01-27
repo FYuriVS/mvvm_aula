@@ -11,7 +11,7 @@ typedef CommandAction1<Output extends Object, Input extends Object>
 abstract class Command<Output extends Object> extends ChangeNotifier {
   // Verifica se o command está em execução
   bool _running = false;
-  bool get runnig => _running;
+  bool get running => _running;
 
   // representação do nosso estado => Ok ou Error ou NULL
   Result<Output>? _result;

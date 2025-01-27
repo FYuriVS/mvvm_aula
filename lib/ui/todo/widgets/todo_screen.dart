@@ -19,7 +19,7 @@ class TodoScreen extends StatelessWidget {
       body: ListenableBuilder(
         listenable: todoViewmodel.load,
         builder: (context, child) {
-          if (todoViewmodel.load.runnig) {
+          if (todoViewmodel.load.running) {
             return const Center(
               child: CircularProgressIndicator(),
             );
@@ -34,7 +34,10 @@ class TodoScreen extends StatelessWidget {
         child: ListenableBuilder(
           listenable: todoViewmodel,
           builder: (context, child) {
-            return TodosList(todos: todoViewmodel.todos);
+            return TodosList(
+              todos: todoViewmodel.todos,
+              todoViewmodel: todoViewmodel,
+            );
           },
         ),
       ),
@@ -43,7 +46,9 @@ class TodoScreen extends StatelessWidget {
           showDialog(
               context: context,
               builder: (context) {
-                return const AddTodoWidget();
+                return AddTodoWidget(
+                  todoViewmodel: todoViewmodel,
+                );
               });
         },
         child: const Icon(Icons.add),
